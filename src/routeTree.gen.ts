@@ -13,6 +13,7 @@ import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as SchemesRouteImport } from './routes/schemes'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as BusinessIdeasRouteImport } from './routes/business-ideas'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
@@ -35,6 +36,11 @@ const BusinessIdeasRoute = BusinessIdeasRouteImport.update({
   path: '/business-ideas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
@@ -67,15 +76,23 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/business-ideas'
     | '/marketplace'
     | '/schemes'
     | '/success-stories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/business-ideas' | '/marketplace' | '/schemes' | '/success-stories'
+  to:
+    | '/'
+    | '/about'
+    | '/business-ideas'
+    | '/marketplace'
+    | '/schemes'
+    | '/success-stories'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/business-ideas'
     | '/marketplace'
     | '/schemes'
@@ -84,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BusinessIdeasRoute: typeof BusinessIdeasRoute
   MarketplaceRoute: typeof MarketplaceRoute
   SchemesRoute: typeof SchemesRoute
@@ -120,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BusinessIdeasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -132,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BusinessIdeasRoute: BusinessIdeasRoute,
   MarketplaceRoute: MarketplaceRoute,
   SchemesRoute: SchemesRoute,
