@@ -11,6 +11,12 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LanguageProvider, useLang } from "@/i18n/LanguageContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { LanguageGate } from "@/components/LanguageGate";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -87,9 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap",
       },
     ],
   }),
@@ -118,8 +127,29 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        <LanguageProvider>
+          <AppShell />
+        </LanguageProvider>
+      </ThemeProvider>
     </QueryClientProvider>
+  );
+}
+
+function AppShell() {
+  const { hasChosen } = useLang();
+
+  if (!hasChosen) return <LanguageGate />;
+
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <Navbar />
+      <main className="flex-1">
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </main>
+      <Footer />
+      <Toaster richColors position="top-center" />
+    </div>
   );
 }
