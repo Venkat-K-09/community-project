@@ -124,8 +124,29 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+        <LanguageProvider>
+          <AppShell />
+        </LanguageProvider>
+      </ThemeProvider>
     </QueryClientProvider>
+  );
+}
+
+function AppShell() {
+  const { hasChosen } = useLang();
+
+  if (!hasChosen) return <LanguageGate />;
+
+  return (
+    <div className="flex min-h-dvh flex-col">
+      <Navbar />
+      <main className="flex-1">
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </main>
+      <Footer />
+      <Toaster richColors position="top-center" />
+    </div>
   );
 }
