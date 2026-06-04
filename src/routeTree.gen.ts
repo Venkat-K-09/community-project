@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as BusinessIdeasRouteImport } from './routes/business-ideas'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
+  id: '/success-stories',
+  path: '/success-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
+  '/success-stories': typeof SuccessStoriesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
+  '/success-stories': typeof SuccessStoriesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/business-ideas': typeof BusinessIdeasRoute
   '/marketplace': typeof MarketplaceRoute
+  '/success-stories': typeof SuccessStoriesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/business-ideas' | '/marketplace'
+  fullPaths: '/' | '/business-ideas' | '/marketplace' | '/success-stories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/business-ideas' | '/marketplace'
-  id: '__root__' | '/' | '/business-ideas' | '/marketplace'
+  to: '/' | '/business-ideas' | '/marketplace' | '/success-stories'
+  id: '__root__' | '/' | '/business-ideas' | '/marketplace' | '/success-stories'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BusinessIdeasRoute: typeof BusinessIdeasRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  SuccessStoriesRoute: typeof SuccessStoriesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/success-stories': {
+      id: '/success-stories'
+      path: '/success-stories'
+      fullPath: '/success-stories'
+      preLoaderRoute: typeof SuccessStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace': {
       id: '/marketplace'
       path: '/marketplace'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BusinessIdeasRoute: BusinessIdeasRoute,
   MarketplaceRoute: MarketplaceRoute,
+  SuccessStoriesRoute: SuccessStoriesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
