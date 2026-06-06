@@ -119,7 +119,16 @@ export function Navbar() {
                   {t(l.key)}
                 </Link>
               ))}
+              <Link
+                to={seller ? "/seller-dashboard" : "/sell"}
+                onClick={() => setOpen(false)}
+                className="mt-1 flex items-center gap-2 rounded-lg bg-primary px-3 py-2.5 text-sm font-semibold text-primary-foreground"
+              >
+                {seller ? <LayoutDashboard className="h-4 w-4" /> : <Store className="h-4 w-4" />}
+                {seller ? t("sellerDashboard") : t("startSellingNav")}
+              </Link>
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
