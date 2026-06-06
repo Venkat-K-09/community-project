@@ -700,3 +700,14 @@ export const impactStats: { value: number; suffix: string; key: "statIdeas" | "s
   { value: 1000, suffix: "+", key: "statProducts" },
   { value: 50, suffix: "+", key: "statStories" },
 ];
+
+// Community workflow journey
+export const workflowSteps: { icon: string; title: Bi; text: Bi }[] = [
+  { icon: "💡", title: b("Learn an Idea", "ఆలోచన నేర్చుకోండి"), text: b("Discover a home-based business idea that fits your skills.", "మీ నైపుణ్యాలకు సరిపోయే గృహ ఆధారిత వ్యాపార ఆలోచనను కనుగొనండి.") },
+  { icon: "🛠️", title: b("Create Products", "ఉత్పత్తులు తయారు చేయండి"), text: b("Make your handmade products using your craft and creativity.", "మీ నైపుణ్యం, సృజనాత్మకతతో చేతి ఉత్పత్తులను తయారు చేయండి.") },
+  { icon: "📝", title: b("Register as Seller", "విక్రేతగా నమోదు చేసుకోండి"), text: b("Create your free seller profile in minutes.", "నిమిషాల్లో మీ ఉచిత విక్రేత ప్రొఫైల్ సృష్టించుకోండి.") },
+  { icon: "📤", title: b("Upload Products", "ఉత్పత్తులను అప్‌లోడ్ చేయండి"), text: b("Add photos, prices and details for your products.", "మీ ఉత్పత్తులకు ఫోటోలు, ధరలు, వివరాలు జోడించండి.") },
+  { icon: "🛒", title: b("Appear in Marketplace", "మార్కెట్‌ప్లేస్‌లో కనిపించండి"), text: b("Your products go live for the whole community to see.", "మీ ఉత్పత్తులు మొత్తం సమాజం చూసేలా ప్రత్యక్షమవుతాయి.") },
+  { icon: "💬", title: b("Buyers Contact You", "కొనుగోలుదారులు సంప్రదిస్తారు"), text: b("Interested buyers reach out to you directly — no middlemen.", "ఆసక్తి గల కొనుగోలుదారులు మిమ్మల్ని నేరుగా సంప్రదిస్తారు — మధ్యవర్తులు లేరు.") },
+  { icon: "📈", title: b("Earn & Grow", "సంపాదించి ఎదగండి"), text: b("Receive inquiries and turn your skill into steady income.", "విచారణలు అందుకొని మీ నైపుణ్యాన్ని స్థిరమైన ఆదాయంగా మార్చుకోండి.") },
+];
