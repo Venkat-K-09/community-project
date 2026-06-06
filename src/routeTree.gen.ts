@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SuccessStoriesRouteImport } from './routes/success-stories'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SellerDashboardRouteImport } from './routes/seller-dashboard'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as SchemesRouteImport } from './routes/schemes'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
@@ -27,6 +28,11 @@ const SuccessStoriesRoute = SuccessStoriesRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellerDashboardRoute = SellerDashboardRouteImport.update({
+  id: '/seller-dashboard',
+  path: '/seller-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SellRoute = SellRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
   '/sell': typeof SellRoute
+  '/seller-dashboard': typeof SellerDashboardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
   '/sell': typeof SellRoute
+  '/seller-dashboard': typeof SellerDashboardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/schemes': typeof SchemesRoute
   '/sell': typeof SellRoute
+  '/seller-dashboard': typeof SellerDashboardRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success-stories': typeof SuccessStoriesRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/schemes'
     | '/sell'
+    | '/seller-dashboard'
     | '/sitemap.xml'
     | '/success-stories'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/schemes'
     | '/sell'
+    | '/seller-dashboard'
     | '/sitemap.xml'
     | '/success-stories'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/schemes'
     | '/sell'
+    | '/seller-dashboard'
     | '/sitemap.xml'
     | '/success-stories'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   SchemesRoute: typeof SchemesRoute
   SellRoute: typeof SellRoute
+  SellerDashboardRoute: typeof SellerDashboardRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessStoriesRoute: typeof SuccessStoriesRoute
 }
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seller-dashboard': {
+      id: '/seller-dashboard'
+      path: '/seller-dashboard'
+      fullPath: '/seller-dashboard'
+      preLoaderRoute: typeof SellerDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sell': {
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   SchemesRoute: SchemesRoute,
   SellRoute: SellRoute,
+  SellerDashboardRoute: SellerDashboardRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessStoriesRoute: SuccessStoriesRoute,
 }
