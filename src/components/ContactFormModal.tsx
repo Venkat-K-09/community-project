@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import {
@@ -20,21 +20,36 @@ export function ContactFormModal({
   onOpenChange,
   subject,
   heading,
+  sellerId,
+  productId,
+  defaultMessage,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
   subject: string;
   heading?: string;
+  sellerId?: string;
+  productId?: string;
+  defaultMessage?: string;
 }) {
   const { t } = useLang();
   const [loading, setLoading] = useState(false);
+  const initialMsg = defaultMessage ?? t("msgPlaceholder");
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    message: t("msgPlaceholder"),
+    message: initialMsg,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Reset message when the modal opens for a new subject
+  useEffect(() => {
+    if (open) {
+      setForm((f) => ({ ...f, message: defaultMessage ?? t("msgPlaceholder") }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, subject]);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -50,13 +65,18 @@ export function ContactFormModal({
     ev.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    // Simulate sending message
     setTimeout(() => {
-      saveInquiry({ ...form, subject });
+      saveInquiry({
+        ...form,
+        subject,
+        sellerId,
+        productId,
+        productName: subject,
+      });
       setLoading(false);
       onOpenChange(false);
       toast.success(t("inquirySent"));
-      setForm({ name: "", email: "", phone: "", message: t("msgPlaceholder") });
+      setForm({ name: "", email: "", phone: "", message: initialMsg });
     }, 900);
   };
 
