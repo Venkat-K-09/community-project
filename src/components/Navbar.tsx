@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
+import { Menu, X, Moon, Sun, Sparkles, Store, LayoutDashboard } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useSeller } from "@/contexts/SellerContext";
+import { Button } from "@/components/ui/button";
 import type { UiKey } from "@/i18n/translations";
 
 const links: { to: string; key: UiKey }[] = [
