@@ -168,7 +168,40 @@ function Home() {
         </div>
       </section>
 
+      {/* Community workflow journey */}
+      <section className="bg-card py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <SectionHeading titleKey="workflowTitle" subKey="workflowSub" />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {workflowSteps.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ y: -4 }}
+                className="relative rounded-2xl border border-border bg-background p-5 shadow-soft"
+              >
+                <span className="absolute right-4 top-4 text-xs font-bold text-primary/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-3xl">{s.icon}</span>
+                <h4 className="mt-3 font-semibold">{tr(s.title)}</h4>
+                <p className="mt-1 text-sm text-muted-foreground">{tr(s.text)}</p>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Button size="lg" onClick={() => navigate({ to: "/sell" })}>
+              <Store className="mr-1 h-4 w-4" /> {t("becomeSeller")} <ArrowRight className="ml-1 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Skill center */}
+
       <section className="bg-card py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading titleKey="skillCenterTitle" subKey="skillCenterSub" />
