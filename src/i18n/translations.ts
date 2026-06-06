@@ -191,6 +191,89 @@ export const ui = {
     "NGOలు, స్వయం సహాయక సంఘాలు & సమాజ సంస్థల కోసం రూపొందించబడింది.",
   ),
 
+  // ===== Seller system =====
+  startSellingNav: b("Start Selling", "అమ్మకం ప్రారంభించండి"),
+  becomeSeller: b("Become a Seller", "విక్రేతగా మారండి"),
+  sellerRegistration: b("Seller Registration", "విక్రేత నమోదు"),
+  sellerRegSub: b(
+    "Register your home-based business and start reaching local buyers today.",
+    "మీ గృహ ఆధారిత వ్యాపారాన్ని నమోదు చేసి, నేటి నుండి స్థానిక కొనుగోలుదారులను చేరుకోండి.",
+  ),
+  fullName: b("Full Name", "పూర్తి పేరు"),
+  location: b("Location", "ప్రాంతం"),
+  businessName: b("Business Name", "వ్యాపార పేరు"),
+  businessCategory: b("Business Category", "వ్యాపార విభాగం"),
+  businessDescription: b("Short Business Description", "వ్యాపార సంక్షిప్త వివరణ"),
+  selectCategory: b("Select a category", "విభాగం ఎంచుకోండి"),
+  registerNow: b("Register as Seller", "విక్రేతగా నమోదు చేసుకోండి"),
+  alreadySeller: b("Already registered?", "ఇప్పటికే నమోదు అయ్యారా?"),
+  goToDashboard: b("Go to Dashboard", "డాష్‌బోర్డ్‌కు వెళ్లండి"),
+  registrationSuccess: b(
+    "Welcome! Your seller profile has been created.",
+    "స్వాగతం! మీ విక్రేత ప్రొఫైల్ సృష్టించబడింది.",
+  ),
+
+  // Dashboard
+  sellerDashboard: b("Seller Dashboard", "విక్రేత డాష్‌బోర్డ్"),
+  dashboardWelcome: b("Welcome back", "తిరిగి స్వాగతం"),
+  myProfile: b("My Profile", "నా ప్రొఫైల్"),
+  myProducts: b("My Products", "నా ఉత్పత్తులు"),
+  customerInquiries: b("Customer Inquiries", "కస్టమర్ విచారణలు"),
+  editProfile: b("Edit Profile", "ప్రొఫైల్ సవరించండి"),
+  saveChanges: b("Save Changes", "మార్పులు సేవ్ చేయండి"),
+  cancel: b("Cancel", "రద్దు చేయండి"),
+  profileUpdated: b("Profile updated successfully!", "ప్రొఫైల్ విజయవంతంగా నవీకరించబడింది!"),
+  logout: b("Log Out", "లాగ్ అవుట్"),
+
+  // Products management
+  addProduct: b("Add Product", "ఉత్పత్తిని జోడించండి"),
+  editProduct: b("Edit Product", "ఉత్పత్తిని సవరించండి"),
+  deleteProduct: b("Delete Product", "ఉత్పత్తిని తొలగించండి"),
+  noProductsYet: b(
+    "No products yet. Add your first product to appear in the marketplace.",
+    "ఇంకా ఉత్పత్తులు లేవు. మార్కెట్‌ప్లేస్‌లో కనిపించడానికి మీ మొదటి ఉత్పత్తిని జోడించండి.",
+  ),
+  noInquiriesYet: b(
+    "No customer inquiries yet. They will appear here when buyers contact you.",
+    "ఇంకా కస్టమర్ విచారణలు లేవు. కొనుగోలుదారులు మిమ్మల్ని సంప్రదించినప్పుడు ఇక్కడ కనిపిస్తాయి.",
+  ),
+  productName: b("Product Name", "ఉత్పత్తి పేరు"),
+  productImage: b("Product Image", "ఉత్పత్తి చిత్రం"),
+  productDescription: b("Product Description", "ఉత్పత్తి వివరణ"),
+  uploadImageHint: b("Click to upload an image", "చిత్రాన్ని అప్‌లోడ్ చేయడానికి క్లిక్ చేయండి"),
+  publishProduct: b("Publish Product", "ఉత్పత్తిని ప్రచురించండి"),
+  updateProduct: b("Update Product", "ఉత్పత్తిని నవీకరించండి"),
+  productPublished: b("Product published to the marketplace!", "ఉత్పత్తి మార్కెట్‌ప్లేస్‌లో ప్రచురించబడింది!"),
+  productUpdated: b("Product updated successfully!", "ఉత్పత్తి విజయవంతంగా నవీకరించబడింది!"),
+  productDeleted: b("Product deleted.", "ఉత్పత్తి తొలగించబడింది."),
+  confirmDeleteProduct: b(
+    "Are you sure you want to delete this product?",
+    "మీరు ఖచ్చితంగా ఈ ఉత్పత్తిని తొలగించాలనుకుంటున్నారా?",
+  ),
+
+  // Inquiries
+  customerName: b("Customer Name", "కస్టమర్ పేరు"),
+  productLabel: b("Product", "ఉత్పత్తి"),
+  receivedOn: b("Received on", "అందిన తేదీ"),
+
+  // Product details
+  viewDetails: b("View Details", "వివరాలు చూడండి"),
+  productDetails: b("Product Details", "ఉత్పత్తి వివరాలు"),
+  sellerInformation: b("Seller Information", "విక్రేత సమాచారం"),
+  backToMarketplace: b("Back to Marketplace", "మార్కెట్‌ప్లేస్‌కు తిరిగి"),
+  productNotFound: b("Product not found.", "ఉత్పత్తి కనుగొనబడలేదు."),
+  defaultInquiryMsg: b(
+    "Hello, I am interested in this product and would like more information.",
+    "నమస్తే, నేను ఈ ఉత్పత్తిపై ఆసక్తిగా ఉన్నాను మరియు మరిన్ని వివరాలు తెలుసుకోవాలనుకుంటున్నాను.",
+  ),
+
+  // Workflow
+  workflowTitle: b("From Skill to Income", "నైపుణ్యం నుండి ఆదాయం వరకు"),
+  workflowSub: b(
+    "See how local residents turn their talent into a thriving small business.",
+    "స్థానిక ప్రజలు తమ ప్రతిభను అభివృద్ధి చెందుతున్న చిన్న వ్యాపారంగా ఎలా మార్చుకుంటారో చూడండి.",
+  ),
+
   // common
   close: b("Close", "మూసివేయి"),
   lightMode: b("Light mode", "లైట్ మోడ్"),
