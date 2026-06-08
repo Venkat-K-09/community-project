@@ -11,7 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { schemes } from "@/data/content";
+import { schemes, sectionImages } from "@/data/content";
 
 export const Route = createFileRoute("/schemes")({
   head: () => ({
@@ -44,6 +44,15 @@ function SchemesPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6">
       <SectionHeading titleKey="schemesTitle" subKey="schemesSub" />
+
+      <div className="mt-8 overflow-hidden rounded-3xl border border-border shadow-soft">
+        <img
+          src={sectionImages.schemes}
+          alt="Community development and entrepreneurship support"
+          loading="lazy"
+          className="h-56 w-full object-cover sm:h-72"
+        />
+      </div>
 
       <div className="relative mx-auto mt-8 max-w-md">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
