@@ -5,7 +5,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useLang } from "@/i18n/LanguageContext";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import { impactStats, solutions } from "@/data/content";
+import { impactStats, solutions, sectionImages } from "@/data/content";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -26,6 +26,15 @@ function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <SectionHeading titleKey="aboutTitle" subKey="footerAbout" />
+
+      <div className="mt-8 overflow-hidden rounded-3xl border border-border shadow-soft">
+        <img
+          src={sectionImages.hero}
+          alt="Community makers working together"
+          loading="lazy"
+          className="h-56 w-full object-cover sm:h-80"
+        />
+      </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         <motion.div
