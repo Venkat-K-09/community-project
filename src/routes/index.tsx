@@ -330,32 +330,37 @@ function EmpowerBlock({
   points,
   tr,
   accent,
+  image,
 }: {
   title: string;
   sub: string;
   points: { icon: string; title: { en: string; te: string }; text: { en: string; te: string } }[];
   tr: (o: { en: string; te: string }) => string;
   accent: string;
+  image: string;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="rounded-3xl border border-border bg-card p-6"
+      className="overflow-hidden rounded-3xl border border-border bg-card"
     >
-      <div className={`inline-block rounded-xl ${accent} px-4 py-1.5 text-sm font-semibold text-primary-foreground`}>
-        {title}
-      </div>
-      <p className="mt-3 text-sm text-muted-foreground">{sub}</p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        {points.map((p, i) => (
-          <div key={i} className="rounded-2xl bg-muted p-4">
-            <span className="text-2xl">{p.icon}</span>
-            <h4 className="mt-2 text-sm font-semibold">{tr(p.title)}</h4>
-            <p className="mt-1 text-xs text-muted-foreground">{tr(p.text)}</p>
-          </div>
-        ))}
+      <img src={image} alt={title} loading="lazy" className="h-52 w-full object-cover" />
+      <div className="p-6">
+        <div className={`inline-block rounded-xl ${accent} px-4 py-1.5 text-sm font-semibold text-primary-foreground`}>
+          {title}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">{sub}</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {points.map((p, i) => (
+            <div key={i} className="rounded-2xl bg-muted p-4">
+              <span className="text-2xl">{p.icon}</span>
+              <h4 className="mt-2 text-sm font-semibold">{tr(p.title)}</h4>
+              <p className="mt-1 text-xs text-muted-foreground">{tr(p.text)}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
