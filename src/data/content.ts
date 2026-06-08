@@ -1,9 +1,46 @@
 import type { Bi } from "@/i18n/translations";
 import { b } from "@/i18n/translations";
 
+import heroImg from "@/assets/hero.jpg";
+import ideaCandles from "@/assets/idea-candles.jpg";
+import ideaPickles from "@/assets/idea-pickles.jpg";
+import ideaTailoring from "@/assets/idea-tailoring.jpg";
+import ideaJewelry from "@/assets/idea-jewelry.jpg";
+import ideaGifts from "@/assets/idea-gifts.jpg";
+import ideaNursery from "@/assets/idea-nursery.jpg";
+import ideaCrochet from "@/assets/idea-crochet.jpg";
+import ideaPaintings from "@/assets/idea-paintings.jpg";
+import ideaDecor from "@/assets/idea-decor.jpg";
+import p1Img from "@/assets/p1.jpg";
+import p2Img from "@/assets/p2.jpg";
+import p3Img from "@/assets/p3.jpg";
+import p4Img from "@/assets/p4.jpg";
+import p5Img from "@/assets/p5.jpg";
+import p6Img from "@/assets/p6.jpg";
+import p7Img from "@/assets/p7.jpg";
+import p8Img from "@/assets/p8.jpg";
+import p9Img from "@/assets/p9.jpg";
+import storyLakshmi from "@/assets/story-lakshmi.jpg";
+import storyRamya from "@/assets/story-ramya.jpg";
+import storyShg from "@/assets/story-shg.jpg";
+import storyArjun from "@/assets/story-arjun.jpg";
+import womenImg from "@/assets/women.jpg";
+import youthImg from "@/assets/youth.jpg";
+import schemesImg from "@/assets/schemes.jpg";
+import contactImg from "@/assets/contact.jpg";
+
+export const sectionImages = {
+  hero: heroImg,
+  women: womenImg,
+  youth: youthImg,
+  schemes: schemesImg,
+  contact: contactImg,
+};
+
 export interface BusinessIdea {
   id: string;
   icon: string;
+  image: string;
   title: Bi;
   tagline: Bi;
   cost: Bi;
@@ -23,6 +60,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "candles",
     icon: "🕯️",
+    image: ideaCandles,
     title: b("Handmade Candles", "చేతితో తయారు చేసిన కొవ్వొత్తులు"),
     tagline: b("Scented & decorative candles", "సువాసన & అలంకరణ కొవ్వొత్తులు"),
     cost: b("₹3,000 – ₹8,000", "₹3,000 – ₹8,000"),
@@ -71,6 +109,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "pickles",
     icon: "🥒",
+    image: ideaPickles,
     title: b("Homemade Pickles", "ఇంట్లో తయారు చేసిన ఊరగాయలు"),
     tagline: b("Traditional flavours, sealed fresh", "సంప్రదాయ రుచులు, తాజాగా ప్యాక్"),
     cost: b("₹2,000 – ₹6,000", "₹2,000 – ₹6,000"),
@@ -118,6 +157,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "tailoring",
     icon: "🧵",
+    image: ideaTailoring,
     title: b("Tailoring & Stitching", "కుట్టు పని"),
     tagline: b("Custom clothing & alterations", "కస్టమ్ దుస్తులు & మార్పులు"),
     cost: b("₹5,000 – ₹15,000", "₹5,000 – ₹15,000"),
@@ -164,6 +204,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "jewelry",
     icon: "💍",
+    image: ideaJewelry,
     title: b("Jewelry Making", "ఆభరణాల తయారీ"),
     tagline: b("Handcrafted & terracotta jewelry", "చేతి & టెర్రకోట ఆభరణాలు"),
     cost: b("₹2,500 – ₹7,000", "₹2,500 – ₹7,000"),
@@ -205,6 +246,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "gifts",
     icon: "🎁",
+    image: ideaGifts,
     title: b("Customized Gifts", "కస్టమైజ్డ్ బహుమతులు"),
     tagline: b("Personalized hampers & frames", "వ్యక్తిగత హాంపర్‌లు & ఫ్రేమ్‌లు"),
     cost: b("₹2,000 – ₹6,000", "₹2,000 – ₹6,000"),
@@ -242,6 +284,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "nursery",
     icon: "🌱",
+    image: ideaNursery,
     title: b("Plant Nursery", "మొక్కల నర్సరీ"),
     tagline: b("Indoor plants & saplings", "ఇండోర్ మొక్కలు & మొలకలు"),
     cost: b("₹4,000 – ₹12,000", "₹4,000 – ₹12,000"),
@@ -279,6 +322,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "crochet",
     icon: "🧶",
+    image: ideaCrochet,
     title: b("Crochet Crafts", "క్రోషే క్రాఫ్ట్‌లు"),
     tagline: b("Handmade wearables & toys", "చేతి దుస్తులు & బొమ్మలు"),
     cost: b("₹1,500 – ₹4,000", "₹1,500 – ₹4,000"),
@@ -316,6 +360,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "paintings",
     icon: "🎨",
+    image: ideaPaintings,
     title: b("Paintings & Art", "చిత్రలేఖనం & కళ"),
     tagline: b("Canvas, folk & custom art", "క్యాన్వాస్, జానపద & కస్టమ్ కళ"),
     cost: b("₹2,000 – ₹6,000", "₹2,000 – ₹6,000"),
@@ -353,6 +398,7 @@ export const businessIdeas: BusinessIdea[] = [
   {
     id: "decor",
     icon: "🏠",
+    image: ideaDecor,
     title: b("Home Décor", "ఇంటి అలంకరణ"),
     tagline: b("Wall art, macramé & accents", "గోడ కళ, మాక్రమే & అలంకరణలు"),
     cost: b("₹3,000 – ₹9,000", "₹3,000 – ₹9,000"),
@@ -398,6 +444,7 @@ export interface Product {
   category: Bi;
   categoryKey: string;
   emoji: string;
+  image: string;
   desc: Bi;
 }
 
@@ -420,6 +467,7 @@ export const products: Product[] = [
     category: b("Crafts", "క్రాఫ్ట్‌లు"),
     categoryKey: "crafts",
     emoji: "🕯️",
+    image: p1Img,
     desc: b("Set of 3 hand-poured soy candles with calming lavender fragrance.", "ప్రశాంతమైన లావెండర్ సువాసనతో చేతితో పోసిన 3 సోయా కొవ్వొత్తుల సెట్."),
   },
   {
@@ -430,6 +478,7 @@ export const products: Product[] = [
     category: b("Homemade Foods", "ఇంటి ఆహారాలు"),
     categoryKey: "foods",
     emoji: "🥭",
+    image: p2Img,
     desc: b("Traditional spicy mango pickle, no preservatives, family recipe.", "సంప్రదాయ కారం మామిడి ఊరగాయ, ప్రిజర్వేటివ్‌లు లేవు, కుటుంబ వంటకం."),
   },
   {
@@ -440,6 +489,7 @@ export const products: Product[] = [
     category: b("Jewelry", "ఆభరణాలు"),
     categoryKey: "jewelry",
     emoji: "💍",
+    image: p3Img,
     desc: b("Handpainted terracotta earrings, lightweight and elegant.", "చేతితో పెయింట్ చేసిన టెర్రకోట చెవి దుద్దులు, తేలికైనవి, అందమైనవి."),
   },
   {
@@ -450,6 +500,7 @@ export const products: Product[] = [
     category: b("Clothing", "దుస్తులు"),
     categoryKey: "clothing",
     emoji: "👚",
+    image: p4Img,
     desc: b("Custom-fit cotton blouse, made to your measurements.", "మీ కొలతలకు తగ్గట్టు కస్టమ్ ఫిట్ పత్తి జాకెట్."),
   },
   {
@@ -460,6 +511,7 @@ export const products: Product[] = [
     category: b("Paintings", "చిత్రాలు"),
     categoryKey: "paintings",
     emoji: "🎨",
+    image: p5Img,
     desc: b("Authentic hand-painted Madhubani folk art on canvas.", "క్యాన్వాస్‌పై చేతితో గీసిన అసలైన మధుబని జానపద కళ."),
   },
   {
@@ -470,6 +522,7 @@ export const products: Product[] = [
     category: b("Home Decor", "ఇంటి అలంకరణ"),
     categoryKey: "decor",
     emoji: "🪢",
+    image: p6Img,
     desc: b("Boho macramé wall hanging, perfect for living rooms.", "లివింగ్ రూమ్‌లకు అనువైన బోహో మాక్రమే గోడ హ్యాంగింగ్."),
   },
   {
@@ -480,6 +533,7 @@ export const products: Product[] = [
     category: b("Gifts", "బహుమతులు"),
     categoryKey: "gifts",
     emoji: "🖼️",
+    image: p7Img,
     desc: b("Custom engraved wooden photo frame for special memories.", "ప్రత్యేక జ్ఞాపకాల కోసం చెక్కిన చెక్క ఫోటో ఫ్రేమ్."),
   },
   {
@@ -490,6 +544,7 @@ export const products: Product[] = [
     category: b("Crafts", "క్రాఫ్ట్‌లు"),
     categoryKey: "crafts",
     emoji: "🧶",
+    image: p8Img,
     desc: b("Soft handmade crochet booties for newborns, gift-ready.", "నవజాత శిశువులకు మృదువైన చేతి క్రోషే బూటీలు, బహుమతికి సిద్ధం."),
   },
   {
@@ -500,6 +555,7 @@ export const products: Product[] = [
     category: b("Homemade Foods", "ఇంటి ఆహారాలు"),
     categoryKey: "foods",
     emoji: "🍡",
+    image: p9Img,
     desc: b("Festive box of fresh homemade laddus, pure ghee.", "స్వచ్ఛమైన నెయ్యితో తాజా ఇంటి లడ్డూల పండుగ బాక్స్."),
   },
 ];
@@ -510,6 +566,7 @@ export interface Story {
   name: Bi;
   role: Bi;
   emoji: string;
+  image: string;
   story: Bi;
   testimonial: Bi;
   growth: Bi;
@@ -521,6 +578,7 @@ export const stories: Story[] = [
     name: b("Lakshmi", "లక్ష్మి"),
     role: b("Homemaker, Guntur", "గృహిణి, గుంటూరు"),
     emoji: "👩",
+    image: storyLakshmi,
     story: b(
       "Lakshmi started making handmade candles from her kitchen. Today she supplies three gift shops and earns a steady second income.",
       "లక్ష్మి తన వంటగది నుండి కొవ్వొత్తులు తయారు చేయడం ప్రారంభించింది. నేడు ఆమె మూడు గిఫ్ట్ షాపులకు సరఫరా చేస్తూ స్థిరమైన అదనపు ఆదాయం పొందుతోంది.",
@@ -536,6 +594,7 @@ export const stories: Story[] = [
     name: b("Ramya", "రమ్య"),
     role: b("Student, Vijayawada", "విద్యార్థి, విజయవాడ"),
     emoji: "👩‍🎓",
+    image: storyRamya,
     story: b(
       "Ramya funds her college fees by selling handmade jewelry online while studying. Her terracotta designs are loved by young buyers.",
       "రమ్య చదువుతూనే ఆన్‌లైన్‌లో చేతి ఆభరణాలు అమ్మి తన కాలేజీ ఫీజులు చెల్లించుకుంటోంది. ఆమె టెర్రకోట డిజైన్‌లను యువత ఇష్టపడుతున్నారు.",
@@ -551,6 +610,7 @@ export const stories: Story[] = [
     name: b("Sunitha SHG", "సునీత స్వయం సహాయక సంఘం"),
     role: b("Self-Help Group, Khammam", "స్వయం సహాయక సంఘం, ఖమ్మం"),
     emoji: "👭",
+    image: storyShg,
     story: b(
       "A group of 12 women started a shared pickle and snacks unit. They now supply local stores and support each other's families.",
       "12 మంది మహిళల బృందం ఉమ్మడి ఊరగాయలు, స్నాక్స్ యూనిట్ ప్రారంభించారు. వారు ఇప్పుడు స్థానిక దుకాణాలకు సరఫరా చేస్తూ ఒకరికొకరు మద్దతుగా ఉన్నారు.",
@@ -566,6 +626,7 @@ export const stories: Story[] = [
     name: b("Arjun", "అర్జున్"),
     role: b("Young Creator, Warangal", "యువ సృష్టికర్త, వరంగల్"),
     emoji: "👨‍🎨",
+    image: storyArjun,
     story: b(
       "Arjun turned his painting passion into a freelance art business, selling prints and taking custom commissions across India.",
       "అర్జున్ తన చిత్రలేఖన అభిరుచిని ఫ్రీలాన్స్ ఆర్ట్ వ్యాపారంగా మార్చి, దేశవ్యాప్తంగా ప్రింట్‌లు, కస్టమ్ ఆర్డర్లు తీసుకుంటున్నాడు.",

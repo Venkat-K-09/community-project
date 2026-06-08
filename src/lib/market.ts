@@ -43,6 +43,7 @@ export function getMarketProducts(lang: Lang): MarketProduct[] {
     categoryKey: p.categoryKey,
     category: pick(p.category, lang),
     description: pick(p.desc, lang),
+    image: p.image,
     emoji: p.emoji,
   }));
 

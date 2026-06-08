@@ -16,7 +16,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { saveInquiry } from "@/lib/inquiries";
-import { faqs } from "@/data/content";
+import { faqs, sectionImages } from "@/data/content";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -63,6 +63,15 @@ function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
       <SectionHeading titleKey="contactTitle" subKey="contactSub" />
+
+      <div className="mt-8 overflow-hidden rounded-3xl border border-border shadow-soft">
+        <img
+          src={sectionImages.contact}
+          alt="Community collaboration and connection"
+          loading="lazy"
+          className="h-56 w-full object-cover sm:h-72"
+        />
+      </div>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-2">
         <motion.form

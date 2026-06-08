@@ -25,6 +25,7 @@ import {
   womenPoints,
   youthPoints,
   workflowSteps,
+  sectionImages,
 } from "@/data/content";
 
 export const Route = createFileRoute("/")({
@@ -105,19 +106,17 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="relative"
           >
-            <div className="grid grid-cols-2 gap-4">
-              {["🕯️", "🥒", "🧵", "🎨", "🧶", "💍"].map((e, i) => (
-                <motion.div
-                  key={i}
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 3 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
-                  className={`glass flex aspect-square items-center justify-center rounded-3xl text-5xl shadow-card ${
-                    i % 2 ? "translate-y-6" : ""
-                  }`}
-                >
-                  {e}
-                </motion.div>
-              ))}
+            <div className="overflow-hidden rounded-[2rem] border border-border shadow-card">
+              <img
+                src={sectionImages.hero}
+                alt="Community makers crafting handmade products"
+                width={1280}
+                height={960}
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-border bg-card/90 px-5 py-3 shadow-card backdrop-blur sm:block">
+              <p className="text-sm font-semibold">{t("tagline")}</p>
             </div>
           </motion.div>
         </div>
@@ -234,6 +233,7 @@ function Home() {
             points={womenPoints}
             tr={tr}
             accent="bg-gradient-hero"
+            image={sectionImages.women}
           />
           <EmpowerBlock
             title={t("youthTitle")}
@@ -241,6 +241,7 @@ function Home() {
             points={youthPoints}
             tr={tr}
             accent="bg-gradient-teal"
+            image={sectionImages.youth}
           />
         </div>
       </section>
@@ -260,9 +261,12 @@ function Home() {
                 className="rounded-3xl border border-border bg-background p-6 shadow-soft"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-warm text-2xl">
-                    {s.emoji}
-                  </span>
+                  <img
+                    src={s.image}
+                    alt={tr(s.name)}
+                    loading="lazy"
+                    className="h-14 w-14 rounded-full object-cover shadow-soft"
+                  />
                   <div>
                     <p className="font-semibold">{tr(s.name)}</p>
                     <p className="text-xs text-muted-foreground">{tr(s.role)}</p>
@@ -329,32 +333,37 @@ function EmpowerBlock({
   points,
   tr,
   accent,
+  image,
 }: {
   title: string;
   sub: string;
   points: { icon: string; title: { en: string; te: string }; text: { en: string; te: string } }[];
   tr: (o: { en: string; te: string }) => string;
   accent: string;
+  image: string;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="rounded-3xl border border-border bg-card p-6"
+      className="overflow-hidden rounded-3xl border border-border bg-card"
     >
-      <div className={`inline-block rounded-xl ${accent} px-4 py-1.5 text-sm font-semibold text-primary-foreground`}>
-        {title}
-      </div>
-      <p className="mt-3 text-sm text-muted-foreground">{sub}</p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        {points.map((p, i) => (
-          <div key={i} className="rounded-2xl bg-muted p-4">
-            <span className="text-2xl">{p.icon}</span>
-            <h4 className="mt-2 text-sm font-semibold">{tr(p.title)}</h4>
-            <p className="mt-1 text-xs text-muted-foreground">{tr(p.text)}</p>
-          </div>
-        ))}
+      <img src={image} alt={title} loading="lazy" className="h-52 w-full object-cover" />
+      <div className="p-6">
+        <div className={`inline-block rounded-xl ${accent} px-4 py-1.5 text-sm font-semibold text-primary-foreground`}>
+          {title}
+        </div>
+        <p className="mt-3 text-sm text-muted-foreground">{sub}</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {points.map((p, i) => (
+            <div key={i} className="rounded-2xl bg-muted p-4">
+              <span className="text-2xl">{p.icon}</span>
+              <h4 className="mt-2 text-sm font-semibold">{tr(p.title)}</h4>
+              <p className="mt-1 text-xs text-muted-foreground">{tr(p.text)}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </motion.div>
   );
