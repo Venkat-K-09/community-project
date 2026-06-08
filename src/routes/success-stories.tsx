@@ -37,9 +37,12 @@ function StoriesPage() {
             className="rounded-3xl border border-border bg-card p-6 shadow-soft"
           >
             <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-warm text-3xl">
-                {s.emoji}
-              </span>
+              <img
+                src={s.image}
+                alt={tr(s.name)}
+                loading="lazy"
+                className="h-16 w-16 rounded-2xl object-cover shadow-soft"
+              />
               <div>
                 <p className="text-lg font-semibold">{tr(s.name)}</p>
                 <p className="text-sm text-muted-foreground">{tr(s.role)}</p>
