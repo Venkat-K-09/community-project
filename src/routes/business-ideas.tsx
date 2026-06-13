@@ -47,14 +47,8 @@ function BusinessIdeasPage() {
             whileHover={{ y: -6 }}
             className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
           >
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={idea.image}
-                alt={tr(idea.title)}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <span className="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-xl bg-card/90 text-xl shadow-soft backdrop-blur">
+            <div className="flex h-40 items-center justify-center bg-gradient-to-br from-accent/40 to-muted/40">
+              <span className="text-6xl transition-transform duration-300 group-hover:scale-110">
                 {idea.icon}
               </span>
             </div>

@@ -32,11 +32,8 @@ export function BusinessIdeaModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[88vh] max-w-2xl overflow-y-auto">
-        <div className="-mx-6 -mt-6 mb-2 h-44 overflow-hidden sm:h-52">
-          <img src={idea.image} alt={tr(idea.title)} className="h-full w-full object-cover" />
-        </div>
         <DialogHeader>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pt-2">
             <span className="text-4xl">{idea.icon}</span>
             <div>
               <DialogTitle className="text-2xl">{tr(idea.title)}</DialogTitle>
