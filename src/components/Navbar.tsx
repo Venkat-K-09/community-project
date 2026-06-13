@@ -28,10 +28,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 glass border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 font-bold" onClick={() => setOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-hero text-primary-foreground">
-            <Sparkles className="h-5 w-5" />
-          </span>
+        <Link to="/" className="flex items-center gap-2.5 font-bold" onClick={() => setOpen(false)}>
+          <img src={logoImg} alt="Community Makers Market" className="h-9 w-9 rounded-xl object-cover" />
           <span className="hidden text-lg sm:inline">{t("brand")}</span>
         </Link>
 
