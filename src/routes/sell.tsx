@@ -16,10 +16,10 @@ import { workflowSteps } from "@/data/content";
 export const Route = createFileRoute("/sell")({
   head: () => ({
     meta: [
-      { title: "Become a Seller — Community Makers' Market" },
-      { name: "description", content: "Register your home-based business and start selling to local buyers. No payments, connect directly." },
-      { property: "og:title", content: "Become a Seller" },
-      { property: "og:description", content: "Turn your skill into income. Register as a community seller." },
+      { title: "Start Selling — Community Makers' Market" },
+      { name: "description", content: "Create your seller account to manage your home-based business, add products, and connect with local buyers." },
+      { property: "og:title", content: "Create Your Seller Account" },
+      { property: "og:description", content: "Join our community of sellers. Create your profile and start showcasing your products." },
     ],
   }),
   component: SellPage,
@@ -59,15 +59,18 @@ function SellPage() {
     if (!validate()) return;
     registerSeller(form);
     refresh();
-    toast.success(t("registrationSuccess"));
+    toast.success(t("accountCreatedSuccess"));
     navigate({ to: "/seller-dashboard" });
   };
 
+  // Already logged in as seller
   if (seller) {
     return (
       <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6">
         <CheckCircle2 className="mx-auto h-14 w-14 text-primary" />
-        <h1 className="mt-4 text-2xl font-bold">{tr({ en: "You're already a seller", te: "మీరు ఇప్పటికే విక్రేత" })}</h1>
+        <h1 className="mt-4 text-2xl font-bold">
+          {tr({ en: "You already have a seller account", te: "మీకు ఇప్పటికే విక్రేత ఖాతా ఉంది" })}
+        </h1>
         <p className="mt-2 text-muted-foreground">{seller.businessName}</p>
         <Button className="mt-6" onClick={() => navigate({ to: "/seller-dashboard" })}>
           {t("goToDashboard")} <ArrowRight className="ml-1 h-4 w-4" />
@@ -78,14 +81,16 @@ function SellPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-      <SectionHeading titleKey="sellerRegistration" subKey="sellerRegSub" />
+      <SectionHeading titleKey="createSellerAccount" subKey="sellerRegSub" />
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-        {/* Workflow journey */}
+
+        {/* Left — how it works + auth info */}
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
-            <Store className="h-3.5 w-3.5 text-primary" /> {t("workflowTitle")}
+            <Store className="h-3.5 w-3.5 text-primary" /> {t("gettingStarted")}
           </span>
+
           <div className="mt-5 grid gap-3">
             {workflowSteps.map((s, i) => (
               <motion.div
@@ -104,14 +109,52 @@ function SellPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Auth info banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-4 rounded-2xl border border-primary/20 bg-primary/5 p-4"
+          >
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 text-xl">🔐</span>
+              <div>
+                <p className="text-sm font-semibold text-foreground">
+                  {tr({ en: "Your Personal Seller Account", te: "మీ వ్యక్తిగత విక్రేత ఖాతా" })}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {tr({
+                    en: "Filling this form creates your seller account. All products you add will be saved exclusively in your own dashboard — no one else can access or edit them.",
+                    te: "ఈ ఫారమ్ నింపడం వల్ల మీ విక్రేత ఖాతా సృష్టించబడుతుంది. మీరు జోడించిన అన్ని ఉత్పత్తులు మీ స్వంత డాష్‌బోర్డ్‌లో మాత్రమే సేవ్ అవుతాయి.",
+                  })}
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Registration form */}
+        {/* Right — registration form (acts as seller authentication) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="rounded-3xl border border-border bg-card p-6 shadow-card sm:p-8"
         >
+          {/* Form header */}
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-hero text-xl text-primary-foreground">
+              🏪
+            </span>
+            <div>
+              <h2 className="font-bold leading-tight">
+                {tr({ en: "Create Your Seller Account", te: "మీ విక్రేత ఖాతాను సృష్టించండి" })}
+              </h2>
+              <p className="text-xs text-muted-foreground">
+                {tr({ en: "Products you list will appear in your private dashboard", te: "మీరు జాబితా చేసిన ఉత్పత్తులు మీ డాష్‌బోర్డ్‌లో కనిపిస్తాయి" })}
+              </p>
+            </div>
+          </div>
+
           <form onSubmit={submit} className="grid gap-4">
             <Field label={t("fullName")} err={errors.fullName}>
               <Input value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} />
@@ -146,10 +189,10 @@ function SellPage() {
               <Textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
             </Field>
             <Button type="submit" size="lg" className="mt-2 w-full">
-              {t("registerNow")} <ArrowRight className="ml-1 h-4 w-4" />
+              {t("createAccount")} <ArrowRight className="ml-1 h-4 w-4" />
             </Button>
             <p className="text-center text-xs text-muted-foreground">
-              {t("alreadySeller")}{" "}
+              {t("alreadyHasAccount")}{" "}
               <Link to="/seller-dashboard" className="font-medium text-primary hover:underline">
                 {t("goToDashboard")}
               </Link>

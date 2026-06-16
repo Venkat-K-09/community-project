@@ -195,6 +195,8 @@ export const ui = {
   startSellingNav: b("Start Selling", "అమ్మకం ప్రారంభించండి"),
   becomeSeller: b("Become a Seller", "విక్రేతగా మారండి"),
   sellerRegistration: b("Seller Registration", "విక్రేత నమోదు"),
+  createSellerAccount: b("Create Your Seller Account", "మీ విక్రేత ఖాతాను సృష్టించండి"),
+  gettingStarted: b("Getting Started", "ప్రారంభం"),
   sellerRegSub: b(
     "Register your home-based business and start reaching local buyers today.",
     "మీ గృహ ఆధారిత వ్యాపారాన్ని నమోదు చేసి, నేటి నుండి స్థానిక కొనుగోలుదారులను చేరుకోండి.",
@@ -206,11 +208,17 @@ export const ui = {
   businessDescription: b("Short Business Description", "వ్యాపార సంక్షిప్త వివరణ"),
   selectCategory: b("Select a category", "విభాగం ఎంచుకోండి"),
   registerNow: b("Register as Seller", "విక్రేతగా నమోదు చేసుకోండి"),
+  createAccount: b("Start Selling — Create My Account", "అమ్మకం ప్రారంభించు — నా ఖాతా సృష్టించు"),
   alreadySeller: b("Already registered?", "ఇప్పటికే నమోదు అయ్యారా?"),
+  alreadyHasAccount: b("Already have an account?", "ఇప్పటికే ఖాతా ఉందా?"),
   goToDashboard: b("Go to Dashboard", "డాష్‌బోర్డ్‌కు వెళ్లండి"),
   registrationSuccess: b(
     "Welcome! Your seller profile has been created.",
     "స్వాగతం! మీ విక్రేత ప్రొఫైల్ సృష్టించబడింది.",
+  ),
+  accountCreatedSuccess: b(
+    "Account created! Welcome to your seller dashboard.",
+    "ఖాతా సృష్టించబడింది! మీ విక్రేత డాష్‌బోర్డ్‌కు స్వాగతం.",
   ),
 
   // Dashboard
