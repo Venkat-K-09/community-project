@@ -18,11 +18,60 @@ import {
 import { faqs, sectionImages } from "@/data/content";
 
 export const Route = createFileRoute("/contact")({
+  component: ContactPage,
   head: () => ({
     meta: [
       { title: "Contact — Community Makers' Market" },
       { name: "description", content: "Get in touch for questions, partnerships and support." },
       { property: "og:title", content: "Contact Us" },
+    ],
+  }),
+});
+
+function ContactPage() {
+  const { t, tr } = useLang();
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  useEffect(() => window.scrollTo(0, 0), []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const submit = async (ev: React.FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch("https://formspree.io/f/xojzknae", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (response.ok) {
+        toast.success(t("messageSentSuccess") || "Message sent successfully!");
+        setForm({ name: "", email: "", phone: "", message: "" });
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          toast.error(data.errors.map((err: any) => err.message).join(", "));
+        } else {
+          toast.error("Failed to send message.");
+        }
+      }
+    } catch (error) {
+      console.error("Formspree submission error:", error);
+      toast.error(t("somethingWentWrong") || "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <SectionHeading titleKey="contactUs" subtitleKey="contactSubtitle" />
+      
+      <div className="relative overflow-hidden rounded-3xl mt-8">
         <img
           src={sectionImages.contact}
           alt="Community collaboration and connection"
@@ -41,21 +90,48 @@ export const Route = createFileRoute("/contact")({
         >
           <div className="grid gap-1.5">
             <Label htmlFor="name">{t("yourName")}</Label>
-            <Input id="name" name="name" required />
+            <Input 
+              id="name" 
+              name="name" 
+              value={form.name} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
           <div className="grid gap-1.5 sm:grid-cols-2 sm:gap-4">
             <div className="grid gap-1.5">
               <Label htmlFor="email">{t("email")}</Label>
-              <Input id="email" name="email" type="email" required />
+              <Input 
+                id="email" 
+                name="email" 
+                type="email" 
+                value={form.email} 
+                onChange={handleChange} 
+                required 
+              />
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="phone">{t("phone")}</Label>
-              <Input id="phone" name="phone" type="tel" required />
+              <Input 
+                id="phone" 
+                name="phone" 
+                type="tel" 
+                value={form.phone} 
+                onChange={handleChange} 
+                required 
+              />
             </div>
           </div>
           <div className="grid gap-1.5">
             <Label htmlFor="message">{t("message")}</Label>
-            <Textarea id="message" name="message" rows={5} required />
+            <Textarea 
+              id="message" 
+              name="message" 
+              rows={5} 
+              value={form.message} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
           <Button type="submit" disabled={loading}>
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
